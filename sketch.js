@@ -176,9 +176,15 @@ function windowResized() {
 }
 
 function mousePressed() {
+  // If clicking the play/pause button, use existing behavior
   if (isPointInPlayButton(mouseX, mouseY)) {
     togglePlayPause(true);
+    return;
   }
+
+  // Toggle fullscreen on any mouse click
+  let fs = fullscreen();
+  fullscreen(!fs);
 }
 
 function updateBaseShapeSize() {
