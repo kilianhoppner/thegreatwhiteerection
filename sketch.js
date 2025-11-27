@@ -57,6 +57,7 @@ let timestampFont;
 let playButtonBounds = { x: 0, y: 0, size: 0 };
 let pausedAudioTime = 0;
 let restartFramesRemaining = 0;
+let uiScale = 1;
 
 const circleDefs = [
   { cx: 435.5, cy: 78.5, r: 24.5 },
@@ -101,6 +102,7 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   referenceCanvasHeight = windowHeight;
+  uiScale = height / 900;  // <--- NEW: UI stays proportional
   noFill();
 
   stroke(lineRGB[0], lineRGB[1], lineRGB[2], lineAlpha);
@@ -173,6 +175,7 @@ function calculateSpeed() {
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   updateBaseShapeSize();
+  uiScale = height / 900;  // <--- NEW: UI stays proportional
 }
 
 function mousePressed() {
